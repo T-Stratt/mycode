@@ -20,7 +20,7 @@ while True:
 
 # The raise ValueError will occur when message condition is not met.
     try:
-        if message not in ["add", "subtract", "multiply", "divide"]:
+        if message.lower() not in ["add", "subtract", "multiply", "divide"]:
             raise ValueError
 # Doing float allows for the use of decimals, without would create False conditon.
         x = float(input("Choose a number:"))  
