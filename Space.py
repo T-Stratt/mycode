@@ -1,11 +1,20 @@
+
 #!/usr/bin/env python3
+"""Alta3 Research | Author: RZFeeser@alta3.com"""
 
-astro= {"message": "success", "number": 5, "people": [{"craft": "ISS", "name": "Chris Cassidy"}, {"craft": "ISS", "name": "Anatoly Ivanishin"}, {"craft": "ISS", "name": "Ivan Vagner"}, {"craft": "ISS", "name": "Doug Hurley"}, {"craft": "ISS", "name": "Bob Behnken"}]} 
+# imports always go at the top of your code
+import requests
 
-for every_astro in astro["people"]:
-    print(every_astro['name']) 
-    print(every_astro['craft'])
+def main():
+    """Run time code"""
+    ## create r, which is our request object
+    r = requests.get('http://api.open-notify.org/astros.json')
 
-message = print(f" {every_astro['name']} is on {every_astro['craft']} in space")
-
+    ## catfact is our iterable -- that just means it will take on the values found within
+    ## r.json()["all"], one after the next-- which happens to be a dictionary
+    ## the code within the loop, says, "from that single dictionary
+    ## print the value associated with text"
+    for x in r.json()["people"]:
+        print(f"{x['name']} is on the {x['craft']}")  # the .get() method returns NONE if key not found
+main()
 
